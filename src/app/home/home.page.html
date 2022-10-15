@@ -1,20 +1,111 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Ionic + Tailwind</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="p-8">
+    <h1 class="text-center font-bold text-sky-500 text-4xl my-4">
+      What is Ionic
+    </h1>
+    <p class="text-center text-lg">
+      Ionic is the app platform for web developers. Build amazing mobile, web,
+      and desktop apps all with one shared code base and open web standards
+    </p>
+    <div class="w-full flex justify-center items-center">
+      <button id="open-modal" expand="block" class="btn btn-blue my-6">
+        {{ message }}
+      </button>
+    </div>
+    <h1 class="text-center font-bold text-sky-500 text-4xl my-4">
+      What is Tailwind
+    </h1>
+    <p class="text-center text-lg">
+      A utility-first CSS framework for rapidly building custom user interfaces.
+    </p>
+    <div class="w-full flex justify-center items-center">
+      <button id="open-modal-tailwind" expand="block" class="btn btn-blue my-6">
+        {{ messageTailwind }}
+      </button>
+    </div>
   </div>
+
+  <!-- Modal ionic -->
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true"
+              >Thanks for the information</ion-button
+            >
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="grid place-content-center h-full p-8">
+          <h1 class="text-center font-bold text-sky-500 text-4xl my-4">
+            Ionic Modal
+          </h1>
+          <p class="text-justify text-lg">
+            Ionic is an open source UI toolkit for building performant,
+            high-quality mobile apps using web technologies — HTML, CSS, and
+            JavaScript — with integrations for popular frameworks like Angular,
+            React, and Vue. Get started building by
+            <a
+              class="text-sky-600 font-bold"
+              href="https://ionicframework.com/docs/intro/cli"
+              target="_blank"
+              >installing Ionic</a
+            >
+            or following our
+            <a
+              class="text-sky-600 font-bold"
+              href="https://ionicframework.com/docs/intro/next#build-your-first-app"
+              target="_blank"
+              >First App Tutorial</a
+            >
+            to learn the main concepts.
+          </p>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <!-- Modal tailwind -->
+  <ion-modal
+    trigger="open-modal-tailwind"
+    (willDismiss)="onWillDismissTailwind($event)"
+  >
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancelTailwind()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirmTailwind()" [strong]="true"
+              >Thanks for the information</ion-button
+            >
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div class="grid place-content-center h-full p-8">
+          <h1 class="text-center font-bold text-sky-500 text-4xl my-4">
+            Tailwind Modal
+          </h1>
+          <p class="text-justify text-lg">
+            Tailwind CSS works by scanning all of your HTML files, JavaScript
+            components, and any other templates for class names, generating the
+            corresponding styles and then writing them to a static CSS file.
+            It's fast, flexible, and reliable — with zero-runtime.
+          </p>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
